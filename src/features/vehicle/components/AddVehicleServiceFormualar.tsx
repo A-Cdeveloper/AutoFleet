@@ -13,8 +13,10 @@ import {
   type ServiceFormInput,
 } from "../../../types/service";
 import Input from "../../../ui/Input";
-import Textarea from "../../../ui/TextArea";
 import Select from "../../../ui/Select";
+import Textarea from "../../../ui/TextArea";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddVehicleServiceFormular = ({
   setShowAddForm,
@@ -79,7 +81,16 @@ const AddVehicleServiceFormular = ({
               name="datum"
               control={control}
               render={({ field }) => (
-                <Input {...field} type="date" size="medium" />
+                <DatePicker
+                  selected={field.value ? new Date(field.value) : null}
+                  onChange={(date) =>
+                    field.onChange(date?.toISOString().split("T")[0])
+                  }
+                  dateFormat="dd.MM.yyyy"
+                  minDate={new Date()}
+                  placeholderText="Izaberi datum"
+                  className="w-full border transition-colors duration-200 font-roboto px-2 py-1 text-xl h-[42px] focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50"
+                />
               )}
             />
             <FormErrorMessage message={errors.datum?.message} />
@@ -128,7 +139,7 @@ const AddVehicleServiceFormular = ({
                   type="number"
                   step="0.01"
                   size="medium"
-                  className="w-40"
+                  className="!w-40"
                 />
                 <span className="text-gray-500">RSD</span>
               </div>
