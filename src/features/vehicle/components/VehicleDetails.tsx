@@ -1,0 +1,69 @@
+import { useNavigate } from "react-router-dom";
+import Button from "../../../ui/Button";
+import ErrorMessage from "../../../ui/ErrorMessage";
+import Headline from "../../../ui/Headline";
+import Spinner from "../../../ui/Spinner";
+import ErrorBoundary from "../../../ui/ErrorBoundary";
+import useDeleteVehicle from "../hooks/useDeleteVehicle";
+import useGetVehicle from "../hooks/useGetVehicle";
+import VehicleServices from "./VehicleServices";
+
+const VehicleDetails = ({ id }: { id: string }) => {
+  const { data: vehicle, isLoading, error } = useGetVehicle(id);
+  const navigate = useNavigate();
+  const {
+    deleteVehicleById,
+    isPending,
+    error: deleteError,
+  } = useDeleteVehicle();
+
+  if (!vehicle) return <ErrorMessage message="Vozilo nije pronađeno." />;
+  if (isLoading || isPending) return <Spinner />;
+  if (error || deleteError) {
+    return <ErrorMessage message={(error || deleteError) ?? undefined} />;
+  }
+
+  return (
+    <ErrorBoundary>
+      <div className="flex flex-col space-y-2">
+        <Headline level={1}>{vehicle?.marka}</Headline>
+        <div className="gap-4 bg-white p-2">
+          <p>Model: {vehicle?.model}</p>
+          <p>Godina: {vehicle?.godina}</p>
+        </div>
+
+        <div className="flex justify-end gap-2">
+          <Button
+            variation="primary"
+            size="small"
+            onClick={() => navigate(`/vehicles/${id}/edit`)}
+          >
+            Izmeni
+          </Button>
+          <Button
+            variation="danger"
+            size="small"
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Da li ste sigurni da želite da obrišete vozilo?"
+                )
+              ) {
+                deleteVehicleById(id, {
+                  onSuccess: () => navigate("/"),
+                });
+              }
+            }}
+            disabled={isPending}
+          >
+            Obriši
+          </Button>
+        </div>
+
+        <VehicleServices vehicleId={id} />
+      </div>
+    </ErrorBoundary>
+  );
+};
+
+export default VehicleDetails;

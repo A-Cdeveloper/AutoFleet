@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base HTML and Body Settings */
+html {
+  font-size: 62.5%; /* 10px base */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.3rem; /* 13px */
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-auto-light;
+}
+
+/* Explicit font definitions for headings with fallback */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif !important;
+  font-display: swap;
+}
+
+p {
+  font-size: 1.3rem;
+}

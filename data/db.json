@@ -1,0 +1,243 @@
+{
+  "vehicles": [
+    {
+      "marka": "Toyota Zero",
+      "model": "Corolla",
+      "godina": 2015,
+      "services": [
+        "s3",
+        "s4",
+        "s5",
+        "s10"
+      ],
+      "id": "v1"
+    },
+    {
+      "id": "v2",
+      "marka": "Volkswagen",
+      "model": "Golf",
+      "godina": 2017,
+      "services": [
+        "s3"
+      ]
+    },
+    {
+      "id": "v3",
+      "marka": "Ford",
+      "model": "Focus",
+      "godina": 2016,
+      "services": [
+        "s7"
+      ]
+    },
+    {
+      "id": "v4",
+      "marka": "Opel",
+      "model": "Astra",
+      "godina": 2014,
+      "services": []
+    },
+    {
+      "id": "v5",
+      "marka": "BMW",
+      "model": "320d",
+      "godina": 2018,
+      "services": [
+        "s2"
+      ]
+    },
+    {
+      "id": "v6",
+      "marka": "Audi",
+      "model": "A4",
+      "godina": 2019,
+      "services": [
+        "s8"
+      ]
+    },
+    {
+      "marka": "Renault",
+      "model": "Clio",
+      "godina": 2018,
+      "id": "v7"
+    },
+    {
+      "marka": "Peugeot",
+      "model": "3008",
+      "godina": 2020,
+      "id": "v8"
+    },
+    {
+      "id": "v9",
+      "marka": "Hyundai",
+      "model": "i30",
+      "godina": 2021,
+      "services": []
+    },
+    {
+      "id": "v10",
+      "marka": "Kia",
+      "model": "Ceed",
+      "godina": 2016,
+      "services": [
+        "s5"
+      ]
+    },
+    {
+      "id": "v11",
+      "marka": "Fiat",
+      "model": "Tipo",
+      "godina": 2017,
+      "services": []
+    },
+    {
+      "id": "v12",
+      "marka": "Mazda",
+      "model": "3",
+      "godina": 2015,
+      "services": [
+        "s9"
+      ]
+    },
+    {
+      "id": "v13",
+      "marka": "Skoda",
+      "model": "Octavia",
+      "godina": 2018,
+      "services": []
+    },
+    {
+      "id": "v14",
+      "marka": "Seat",
+      "model": "Leon",
+      "godina": 2019,
+      "services": [
+        "s6"
+      ]
+    },
+    {
+      "id": "v15",
+      "marka": "Nissan",
+      "model": "Qashqai",
+      "godina": 2020,
+      "services": []
+    },
+    {
+      "id": "v17",
+      "marka": "Suzuki",
+      "model": "Swift",
+      "godina": 2014,
+      "services": []
+    },
+    {
+      "id": "v18",
+      "marka": "Honda",
+      "model": "Civic",
+      "godina": 2016,
+      "services": []
+    },
+    {
+      "id": "v20",
+      "marka": "Dacia",
+      "model": "Duster",
+      "godina": 2022,
+      "services": [
+        "s10"
+      ]
+    },
+    {
+      "id": "d76c",
+      "marka": "Yugo",
+      "model": "45",
+      "godina": 2000,
+      "services": []
+    },
+    {
+      "id": "72a6",
+      "marka": "Volkswagen",
+      "model": "up",
+      "godina": 2025,
+      "services": []
+    }
+  ],
+  "services": [
+    {
+      "id": "s1",
+      "datum": "2025-08-01",
+      "opis": "Zamena ulja i filtera",
+      "cena": 8500,
+      "tipServisa": "redovni"
+    },
+    {
+      "id": "s2",
+      "datum": "2025-07-15",
+      "opis": "Popravka kočionog sistema",
+      "cena": 12000,
+      "tipServisa": "kvar"
+    },
+    {
+      "id": "s3",
+      "datum": "2025-06-20",
+      "opis": "Zamena guma",
+      "cena": 24000,
+      "tipServisa": "redovni"
+    },
+    {
+      "id": "s4",
+      "datum": "2025-05-10",
+      "opis": "Servis klima uređaja",
+      "cena": 6500,
+      "tipServisa": "redovni"
+    },
+    {
+      "id": "s5",
+      "datum": "2025-04-05",
+      "opis": "Popravka motora",
+      "cena": 75000,
+      "tipServisa": "kvar"
+    },
+    {
+      "id": "s6",
+      "datum": "2025-03-18",
+      "opis": "Zamena akumulatora",
+      "cena": 9500,
+      "tipServisa": "redovni"
+    },
+    {
+      "id": "s7",
+      "datum": "2025-02-22",
+      "opis": "Zamena svetala",
+      "cena": 3000,
+      "tipServisa": "kvar"
+    },
+    {
+      "id": "s8",
+      "datum": "2025-01-30",
+      "opis": "Veliki servis (remen, pumpa)",
+      "cena": 40000,
+      "tipServisa": "redovni"
+    },
+    {
+      "id": "s9",
+      "datum": "2024-12-12",
+      "opis": "Zamena stakla",
+      "cena": 18000,
+      "tipServisa": "kvar"
+    },
+    {
+      "id": "s10",
+      "datum": "2024-11-05",
+      "opis": "Zamena svećica i kablova",
+      "cena": 7000,
+      "tipServisa": "redovni"
+    }
+  ],
+  "users": [
+    {
+      "uid": "1",
+      "username": "admin",
+      "password": "admin",
+      "id": "806d"
+    }
+  ]
+}
