@@ -8,7 +8,8 @@
         "s3",
         "s4",
         "s2",
-        "s7"
+        "s7",
+        "f3b0"
       ],
       "id": "v1"
     },
@@ -228,6 +229,27 @@
       "opis": "Zamena svećica i kablova",
       "cena": 7000,
       "tipServisa": "redovni"
+    },
+    {
+      "id": "b0d2",
+      "datum": "2025-08-07",
+      "opis": "8",
+      "cena": 0,
+      "tipServisa": "kvar"
+    },
+    {
+      "id": "f3b0",
+      "datum": "2025-08-08",
+      "opis": "KVAR kocnice",
+      "cena": 5000,
+      "tipServisa": "kvar"
+    },
+    {
+      "id": "9af1",
+      "datum": "2025-08-08",
+      "opis": "87",
+      "cena": 50,
+      "tipServisa": "redovni servis"
     }
   ],
   "users": [
