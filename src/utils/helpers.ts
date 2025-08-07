@@ -6,5 +6,5 @@ export const formatDate = (date: Date) => {
 
 ///////////////////////////////////////////////
 export const formatPrice = (price: number) => {
-  return `${price.toFixed(2)} €`;
+  return `${price.toFixed(2)} RSD`;
 };
