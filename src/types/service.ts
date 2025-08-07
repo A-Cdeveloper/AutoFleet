@@ -1,7 +1,42 @@
-enum ServiceType {
-  REDOVNI = "redovni",
+import { z } from "zod";
+
+export enum ServiceType {
+  REDOVNI = "redovni servis",
   KVAR = "kvar",
 }
+
+const baseServiceSchema = {
+  datum: z
+    .string()
+    .min(1, "Datum je obavezan")
+    .refine(
+      (val) => {
+        const selectedDate = new Date(val);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return selectedDate >= today;
+      },
+      {
+        message: "Datum ne može biti u prošlosti",
+      }
+    ),
+  tipServisa: z
+    .enum(ServiceType)
+    .refine((val) => Object.values(ServiceType).includes(val), {
+      message: "Izaberite tip servisa",
+    }),
+  opis: z.string().min(1, "Opis je obavezan"),
+};
+
+export const serviceFormInputSchema = z.object({
+  ...baseServiceSchema,
+  cena: z
+    .string()
+    .min(1, "Cena je obavezna")
+    .refine((val) => Number(val) > 0, {
+      message: "Cena mora biti veća od 0",
+    }),
+});
 
 export type Service = {
   id: string;
@@ -10,3 +45,5 @@ export type Service = {
   cena: number;
   tipServisa: ServiceType;
 };
+
+export type ServiceFormInput = z.infer<typeof serviceFormInputSchema>;
