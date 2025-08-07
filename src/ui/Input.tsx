@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import clsx from "clsx";
 
 export type InputType = {
-  type?: "text" | "password" | "email" | "number";
+  type?: "text" | "password" | "email" | "number" | "date";
   placeholder?: string;
   value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,6 +13,7 @@ export type InputType = {
   autoFocus?: boolean;
   size?: "small" | "medium" | "large";
   className?: string;
+  step?: string | number;
 };
 
 const sizeClasses: Record<NonNullable<InputType["size"]>, string> = {
@@ -35,6 +36,7 @@ const Input = forwardRef<HTMLInputElement, InputType>(
       autoFocus = false,
       size = "medium",
       className = "",
+      step, // primamo step
     },
     ref
   ) => {
@@ -50,10 +52,12 @@ const Input = forwardRef<HTMLInputElement, InputType>(
         required={required}
         disabled={disabled}
         autoFocus={autoFocus}
+        step={step}
         className={clsx(
           "w-full border transition-colors duration-200 font-roboto",
           "focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50",
           "disabled:opacity-50 disabled:cursor-not-allowed",
+          "h-[42px]", // Eksplicitna visina za konzistentnost
           sizeClasses[size],
           className
         )}
