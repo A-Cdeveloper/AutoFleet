@@ -3,8 +3,10 @@ import { Button, ErrorMessage, Headline, Spinner, ErrorBoundary } from "@/ui";
 import useDeleteVehicle from "@/features/vehicle/hooks/useDeleteVehicle";
 import useGetVehicle from "@/features/vehicle/hooks/useGetVehicle";
 import VehicleServices from "@/features/vehicle/components/VehicleServices";
+import React from "react";
+import { useCallback } from "react";
 
-const VehicleDetails = ({ id }: { id: string }) => {
+const VehicleDetails = React.memo(({ id }: { id: string }) => {
   const { data: vehicle, isLoading, error } = useGetVehicle(id);
   const navigate = useNavigate();
   const {
@@ -12,6 +14,18 @@ const VehicleDetails = ({ id }: { id: string }) => {
     isPending,
     error: deleteError,
   } = useDeleteVehicle();
+
+  const handleEdit = useCallback(() => {
+    navigate(`/vehicles/${id}/edit`);
+  }, [navigate, id]);
+
+  const handleDelete = useCallback(() => {
+    if (window.confirm("Da li ste sigurni da želite da obrišete vozilo?")) {
+      deleteVehicleById(id, {
+        onSuccess: () => navigate("/"),
+      });
+    }
+  }, [deleteVehicleById, id, navigate]);
 
   if (!vehicle) return <ErrorMessage message="Vozilo nije pronađeno." />;
   if (isLoading || isPending) return <Spinner />;
@@ -32,7 +46,7 @@ const VehicleDetails = ({ id }: { id: string }) => {
           <Button
             variation="primary"
             size="small"
-            onClick={() => navigate(`/vehicles/${id}/edit`)}
+            onClick={handleEdit}
             aria-label="Izmeni vozilo"
           >
             Izmeni
@@ -40,17 +54,7 @@ const VehicleDetails = ({ id }: { id: string }) => {
           <Button
             variation="danger"
             size="small"
-            onClick={() => {
-              if (
-                window.confirm(
-                  "Da li ste sigurni da želite da obrišete vozilo?"
-                )
-              ) {
-                deleteVehicleById(id, {
-                  onSuccess: () => navigate("/"),
-                });
-              }
-            }}
+            onClick={handleDelete}
             disabled={isPending}
             aria-label="Obriši vozilo"
           >
@@ -62,6 +66,6 @@ const VehicleDetails = ({ id }: { id: string }) => {
       </div>
     </ErrorBoundary>
   );
-};
+});
 
 export default VehicleDetails;

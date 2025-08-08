@@ -26,6 +26,14 @@ class ErrorBoundary extends Component<Props, State> {
     console.error("Error caught by ErrorBoundary:", error, errorInfo);
   }
 
+  handleReload = () => {
+    window.location.reload();
+  };
+
+  handleRetry = () => {
+    this.setState({ hasError: false });
+  };
+
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
@@ -64,14 +72,14 @@ class ErrorBoundary extends Component<Props, State> {
               <Button
                 variation="primary"
                 size="medium"
-                onClick={() => window.location.reload()}
+                onClick={this.handleReload}
               >
                 Osveži stranicu
               </Button>
               <Button
                 variation="secondary"
                 size="medium"
-                onClick={() => this.setState({ hasError: false })}
+                onClick={this.handleRetry}
               >
                 Pokušaj ponovo
               </Button>

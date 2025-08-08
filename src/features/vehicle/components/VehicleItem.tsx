@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
+import React from "react";
 import type { Vehicle } from "@/types/vehicle";
 import { Button, Headline } from "@/ui";
 import { useAuthStore } from "@/store/authStore";
 
-const VehicleItem = ({ vehicle }: { vehicle: Vehicle }) => {
+const VehicleItem = React.memo(({ vehicle }: { vehicle: Vehicle }) => {
   const navigate = useNavigate();
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  const handleNavigate = useCallback(() => {
+    navigate(`/vehicles/${vehicle.id}`);
+  }, [navigate, vehicle.id]);
 
   return (
     <div className=" bg-white p-2">
@@ -19,9 +25,7 @@ const VehicleItem = ({ vehicle }: { vehicle: Vehicle }) => {
             size="small"
             variation="secondary"
             className="py-[4px]"
-            onClick={() => {
-              navigate(`/vehicles/${vehicle.id}`);
-            }}
+            onClick={handleNavigate}
             aria-label={`Pogledaj detalje za ${vehicle.marka} ${vehicle.model}`}
           >
             Detalji
@@ -30,6 +34,6 @@ const VehicleItem = ({ vehicle }: { vehicle: Vehicle }) => {
       )}
     </div>
   );
-};
+});
 
 export default VehicleItem;

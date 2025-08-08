@@ -3,7 +3,7 @@ import { Button, ErrorBoundary, Headline } from "@/ui";
 import useGetVehicleServices from "@/features/vehicle/hooks/useGetVehicleServices";
 import AddVehicleServiceFormualar from "@/features/vehicle/components/AddVehicleServiceFormualar";
 import VehicleService from "@/features/vehicle/components/VehicleService";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 type VehicleServicesProps = {
   vehicleId: string;
@@ -13,6 +13,18 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
   const { data: services, isLoading, error } = useGetVehicleServices(vehicleId);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingServiceId, setEditingServiceId] = useState<string | null>(null);
+
+  const handleToggleAddForm = useCallback(() => {
+    setShowAddForm(!showAddForm);
+  }, [showAddForm]);
+
+  const handleEditClick = useCallback((serviceId: string) => {
+    setEditingServiceId(serviceId);
+  }, []);
+
+  const handleCancelEdit = useCallback(() => {
+    setEditingServiceId(null);
+  }, []);
 
   if (isLoading) return <p>Učitavanje servisa...</p>;
   if (error) return <p>Greška: {error}</p>;
@@ -25,8 +37,8 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
           service={service}
           vehicleId={vehicleId}
           isEditing={editingServiceId === service.id}
-          onEditClick={() => setEditingServiceId(service.id)}
-          onCancelEdit={() => setEditingServiceId(null)}
+          onEditClick={() => handleEditClick(service.id)}
+          onCancelEdit={handleCancelEdit}
         />
       ))}
     </ul>
@@ -48,7 +60,7 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
             <Button
               variation="secondary"
               size="small"
-              onClick={() => setShowAddForm(!showAddForm)}
+              onClick={handleToggleAddForm}
               aria-label="Dodaj novi servis"
             >
               Dodaj servis
