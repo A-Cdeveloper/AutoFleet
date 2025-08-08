@@ -2,13 +2,22 @@ import type { Service } from "../../../types/service";
 import Button from "../../../ui/Button";
 import { formatDate, formatPrice } from "../../../utils/helpers";
 import useRemoveServiceFromVehicle from "../hooks/useRemoveServiceFromVehicle";
+import EditVehicleServiceFormular from "./EditVehicleServiceFormular";
+import Spinner from "../../../ui/Spinner";
+import ErrorMessage from "../../../ui/ErrorMessage";
 
 const VehicleService = ({
   service,
   vehicleId,
+  isEditing,
+  onEditClick,
+  onCancelEdit,
 }: {
   service: Service;
   vehicleId: string;
+  isEditing: boolean;
+  onEditClick: () => void;
+  onCancelEdit: () => void;
 }) => {
   const { removeService, isPending, error } = useRemoveServiceFromVehicle();
 
@@ -22,30 +31,43 @@ const VehicleService = ({
     }
   };
 
+  if (isPending) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
+
   return (
-    <li
-      key={service.id}
-      className="p-2 border rounded-md shadow-sm grid grid-cols-1 lg:grid-cols-5 gap-2 bg-white/50 items-center"
-    >
-      <p>{formatDate(new Date(service.datum))}</p>
-      <p>{service.opis}</p>
-      <p>{formatPrice(service.cena)}</p>
-      <p>{service.tipServisa}</p>
-      <div className="flex gap-2 justify-end items-center">
-        <Button variation="primary" size="small">
-          Uredi
-        </Button>
-        <Button
-          variation="danger"
-          size="small"
-          onClick={handleRemove}
-          disabled={isPending}
+    <>
+      {isEditing ? (
+        <EditVehicleServiceFormular
+          service={service}
+          vehicleId={vehicleId}
+          onCancel={onCancelEdit}
+        />
+      ) : (
+        <li
+          key={service.id}
+          className="p-2 border rounded-md shadow-sm grid grid-cols-1 lg:grid-cols-5 gap-2 bg-white/50 items-center"
         >
-          {isPending ? "Brišem..." : "Obriši"}
-        </Button>
-      </div>
-      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
-    </li>
+          <p>{formatDate(new Date(service.datum))}</p>
+          <p>{service.opis}</p>
+          <p>{formatPrice(service.cena)}</p>
+          <p>{service.tipServisa}</p>
+
+          <div className="flex gap-2 justify-end items-center">
+            <Button variation="primary" size="small" onClick={onEditClick}>
+              Izmeni
+            </Button>
+            <Button
+              variation="danger"
+              size="small"
+              onClick={handleRemove}
+              disabled={isPending}
+            >
+              {isPending ? "Brisanje..." : "Obriši"}
+            </Button>
+          </div>
+        </li>
+      )}
+    </>
   );
 };
 

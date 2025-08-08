@@ -18,8 +18,7 @@
       "model": "Golf",
       "godina": 2018,
       "services": [
-        "0677",
-        "918b"
+        "47a1"
       ],
       "id": "v2"
     },
@@ -255,18 +254,25 @@
       "tipServisa": "redovni servis"
     },
     {
-      "id": "0677",
-      "datum": "2025-08-08",
+      "datum": "2025-08-20",
       "opis": "zamena ulja",
       "cena": 25000,
-      "tipServisa": "redovni servis"
+      "tipServisa": "redovni servis",
+      "id": "0677"
     },
     {
-      "id": "918b",
       "datum": "2025-08-08",
       "opis": "menjac ulje",
       "cena": 500,
-      "tipServisa": "kvar"
+      "tipServisa": "redovni servis",
+      "id": "918b"
+    },
+    {
+      "datum": "2025-08-20",
+      "opis": "zamena ulja",
+      "cena": 2500,
+      "tipServisa": "redovni servis",
+      "id": "47a1"
     }
   ],
   "users": [

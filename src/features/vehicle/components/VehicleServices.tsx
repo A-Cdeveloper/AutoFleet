@@ -14,6 +14,7 @@ type VehicleServicesProps = {
 const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
   const { data: services, isLoading, error } = useGetVehicleServices(vehicleId);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [editingServiceId, setEditingServiceId] = useState<string | null>(null);
 
   if (isLoading) return <p>Učitavanje servisa...</p>;
   if (error) return <p>Greška: {error}</p>;
@@ -25,6 +26,9 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
           key={service.id}
           service={service}
           vehicleId={vehicleId}
+          isEditing={editingServiceId === service.id}
+          onEditClick={() => setEditingServiceId(service.id)}
+          onCancelEdit={() => setEditingServiceId(null)}
         />
       ))}
     </ul>
@@ -36,16 +40,13 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
   return (
     <ErrorBoundary>
       <div>
-        <Headline level={2}>Lista servisa</Headline>
-        {content}
-
         {showAddForm ? (
           <AddVehicleServiceFormualar
             setShowAddForm={setShowAddForm}
             vehicleId={vehicleId}
           />
         ) : (
-          <div className="flex justify-end my-4 border-t py-4">
+          <div className="flex justify-end my-4 border-y py-2">
             <Button
               variation="secondary"
               size="small"
@@ -55,6 +56,8 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
             </Button>
           </div>
         )}
+        <Headline level={2}>Lista servisa</Headline>
+        {content}
       </div>
     </ErrorBoundary>
   );

@@ -6,7 +6,7 @@ import Spinner from "../../../ui/Spinner";
 import ErrorMessage from "../../../ui/ErrorMessage";
 import FormErrorMessage from "../../../ui/FormErrorMessage";
 import ErrorBoundary from "../../../ui/ErrorBoundary";
-import { useAddServiceToVehicle } from "../hooks/useAddServiceToVehicle";
+import { useEditServiceInVehicle } from "../hooks/useEditServiceInVehicle";
 import {
   serviceFormInputSchema,
   ServiceType,
@@ -17,37 +17,40 @@ import Select from "../../../ui/Select";
 import Textarea from "../../../ui/TextArea";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import type { Service } from "../../../types/service";
 
-const AddVehicleServiceFormular = ({
-  setShowAddForm,
-  vehicleId,
-}: {
-  setShowAddForm: (show: boolean) => void;
+type EditVehicleServiceFormularProps = {
+  service: Service;
   vehicleId: string;
-}) => {
+  onCancel: () => void;
+};
+
+const EditVehicleServiceFormular = ({
+  service,
+  vehicleId,
+  onCancel,
+}: EditVehicleServiceFormularProps) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<ServiceFormInput>({
     resolver: zodResolver(serviceFormInputSchema),
     defaultValues: {
-      datum: new Date(Date.now() + 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
-      tipServisa: ServiceType.REDOVNI,
-      opis: "",
-      cena: "",
+      datum: service.datum,
+      tipServisa: service.tipServisa,
+      opis: service.opis,
+      cena: service.cena.toString(),
     },
   });
 
-  const { addNewService, isPending, error } = useAddServiceToVehicle();
+  const { editService, isPending, error } = useEditServiceInVehicle();
 
   const onSubmit = async (data: ServiceFormInput) => {
-    await addNewService(
+    await editService(
       {
         vehicleId,
+        serviceId: service.id,
         serviceData: {
           datum: data.datum,
           opis: data.opis,
@@ -57,8 +60,7 @@ const AddVehicleServiceFormular = ({
       },
       {
         onSuccess: () => {
-          reset();
-          setShowAddForm(false);
+          onCancel();
         },
       }
     );
@@ -71,9 +73,9 @@ const AddVehicleServiceFormular = ({
     <ErrorBoundary>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-auto-success/10 p-4 rounded-md border my-4 space-y-4"
+        className="bg-gray-300 p-4 rounded-md border my-0 space-y-4"
       >
-        <Headline level={2}>Dodaj novi servis</Headline>
+        <Headline level={2}>Izmeni servis</Headline>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -153,9 +155,9 @@ const AddVehicleServiceFormular = ({
             type="button"
             variation="secondary"
             size="small"
-            onClick={() => setShowAddForm(false)}
+            onClick={onCancel}
           >
-            Odustani
+            Otkaži
           </Button>
           <Button
             type="submit"
@@ -163,7 +165,7 @@ const AddVehicleServiceFormular = ({
             size="small"
             disabled={isPending}
           >
-            {isPending ? "Dodavanje..." : "Sačuvaj"}
+            {isPending ? "Čuvanje..." : "Sačuvaj izmene"}
           </Button>
         </div>
       </form>
@@ -171,4 +173,4 @@ const AddVehicleServiceFormular = ({
   );
 };
 
-export default AddVehicleServiceFormular;
+export default EditVehicleServiceFormular;
