@@ -46,7 +46,9 @@ const VehicleService = React.memo(
         ) : (
           <li
             key={service.id}
-            className="p-2 border rounded-md shadow-sm grid grid-cols-1 lg:grid-cols-5 gap-2 bg-white/50 items-center"
+            className={`p-2 border rounded-md shadow-sm grid grid-cols-1 lg:grid-cols-5 gap-2 bg-white/50 items-center ${
+              !isEditing ? "self-start" : ""
+            }`}
           >
             <p>{formatDate(new Date(service.datum))}</p>
             <p>{service.opis}</p>
