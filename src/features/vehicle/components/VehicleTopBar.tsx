@@ -58,18 +58,18 @@ const VehicleTopBar = React.memo(
 
         <div className="flex flex-col sm:flex-row sm:space-x-4 flex-grow w-full">
           <FilterInput
-            placeholder="Filter po marki"
+            placeholder="Marka vozila"
             value={markaFilter}
             onChange={handleMarkaChange}
           />
           <FilterInput
-            placeholder="Mlađe od ..."
+            placeholder="Godiste od ..."
             type="number"
             value={godisteFilter}
             onChange={handleGodisteChange}
           />
           <FilterInput
-            placeholder="Filter po modelu"
+            placeholder="Model vozila"
             value={modelFilter}
             onChange={handleModelChange}
           />
