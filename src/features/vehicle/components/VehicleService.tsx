@@ -1,10 +1,11 @@
 import type { Service } from "@/types/service";
-import { Button, Spinner, ErrorMessage } from "@/ui";
+import { IconButton, Spinner, ErrorMessage } from "@/ui";
 import { formatDate, formatPrice } from "@/utils/helpers";
 import useRemoveServiceFromVehicle from "@/features/vehicle/hooks/useRemoveServiceFromVehicle";
 import EditVehicleServiceFormular from "@/features/vehicle/components/EditVehicleServiceFormular";
 import React from "react";
 import { useCallback } from "react";
+import { Edit, Trash2 } from "lucide-react";
 
 const VehicleService = React.memo(
   ({
@@ -55,24 +56,18 @@ const VehicleService = React.memo(
             <p>{formatPrice(service.cena)}</p>
             <p>{service.tipServisa}</p>
 
-            <div className="flex gap-2 justify-end items-center">
-              <Button
-                variation="danger"
-                size="small"
+            <div className="flex gap-3 justify-end items-center">
+              <IconButton
+                icon={<Edit size={20} className="text-auto-secondary" />}
+                onClick={onEditClick}
+                aria-label="Izmeni servis"
+              />
+              <IconButton
+                icon={<Trash2 size={20} className="text-auto-error" />}
                 onClick={handleRemove}
                 disabled={isPending}
                 aria-label="Obriši servis"
-              >
-                {isPending ? "Brisanje..." : "Obriši"}
-              </Button>
-              <Button
-                variation="primary"
-                size="small"
-                onClick={onEditClick}
-                aria-label="Izmeni servis"
-              >
-                Izmeni
-              </Button>
+              />
             </div>
           </li>
         )}

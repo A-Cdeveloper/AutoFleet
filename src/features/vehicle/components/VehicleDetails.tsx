@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { Button, ErrorMessage, Headline, Spinner, ErrorBoundary } from "@/ui";
+import {
+  IconButton,
+  ErrorMessage,
+  Headline,
+  Spinner,
+  ErrorBoundary,
+} from "@/ui";
 import useDeleteVehicle from "@/features/vehicle/hooks/useDeleteVehicle";
 import useGetVehicle from "@/features/vehicle/hooks/useGetVehicle";
 import VehicleServices from "@/features/vehicle/components/VehicleServices";
 import React from "react";
 import { useCallback } from "react";
+import { Edit, Trash2 } from "lucide-react";
 
 const VehicleDetails = React.memo(({ id }: { id: string }) => {
   const { data: vehicle, isLoading, error } = useGetVehicle(id);
@@ -34,8 +41,8 @@ const VehicleDetails = React.memo(({ id }: { id: string }) => {
     }
   }, [deleteVehicleById, id, vehicle, navigate]);
 
-  if (!vehicle) return <ErrorMessage message="Vozilo nije pronađeno." />;
   if (isLoading || isPending) return <Spinner />;
+  if (!vehicle) return <ErrorMessage message="Vozilo nije pronađeno." />;
   if (error || deleteError) {
     return <ErrorMessage message={(error || deleteError) ?? undefined} />;
   }
@@ -44,29 +51,24 @@ const VehicleDetails = React.memo(({ id }: { id: string }) => {
     <ErrorBoundary>
       <div className="flex flex-col space-y-2">
         <Headline level={1}>{vehicle?.marka}</Headline>
-        <div className="gap-4 bg-white p-2">
-          <p>Model: {vehicle?.model}</p>
-          <p>Godina: {vehicle?.godina}</p>
-        </div>
-
-        <div className="flex justify-end gap-2">
-          <Button
-            variation="danger"
-            size="small"
-            onClick={handleDelete}
-            disabled={isPending}
-            aria-label="Obriši vozilo"
-          >
-            Obriši
-          </Button>
-          <Button
-            variation="primary"
-            size="small"
-            onClick={handleEdit}
-            aria-label="Izmeni vozilo"
-          >
-            Izmeni
-          </Button>
+        <div className="gap-4 bg-white p-2 flex flex-wrap justify-between items-center">
+          <div>
+            <p>Model: {vehicle?.model}</p>
+            <p>Godina: {vehicle?.godina}</p>
+          </div>
+          <div className="flex gap-3">
+            <IconButton
+              icon={<Edit size={20} className="text-auto-secondary" />}
+              onClick={handleEdit}
+              aria-label="Izmeni vozilo"
+            />
+            <IconButton
+              icon={<Trash2 size={20} className="text-auto-error" />}
+              onClick={handleDelete}
+              disabled={isPending}
+              aria-label="Obriši vozilo"
+            />
+          </div>
         </div>
 
         <VehicleServices vehicleId={id} />
