@@ -4,6 +4,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useNavigate } from "react-router-dom";
 import { Headline, Button, Input, FormErrorMessage, ErrorBoundary } from "@/ui";
 import { loginSchema, type LoginFormData } from "@/types/auth";
+import toast from "react-hot-toast";
 
 export default function LoginForm() {
   const {
@@ -25,6 +26,7 @@ export default function LoginForm() {
   const onSubmit = async (data: LoginFormData) => {
     const success = login(data.username, data.password);
     if (success) {
+      toast.success("Uspešno ste se prijavili!");
       navigate("/");
     } else {
       setError("root", {
