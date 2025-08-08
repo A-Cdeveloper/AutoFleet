@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Headline from "../Headline";
+import Headline from "@/ui/Headline";
 
 const Logo = () => {
   return (

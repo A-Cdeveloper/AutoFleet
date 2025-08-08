@@ -1,4 +1,4 @@
-import VehicleList from "../features/vehicle/components/VehicleList";
+import VehicleList from "@/features/vehicle/components/VehicleList";
 
 const HomePage = () => {
   return <VehicleList />;

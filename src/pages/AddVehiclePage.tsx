@@ -1,5 +1,5 @@
-import AddVehicleForm from "../features/vehicle/components/AddVehicleFormular";
-import BackButton from "../ui/BackButton";
+import AddVehicleForm from "@/features/vehicle/components/AddVehicleFormular";
+import BackButton from "@/ui/BackButton";
 
 const AddVehiclePage = () => {
   return (

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
-import LoginForm from "../features/login/components/LoginForm";
-import { useAuthStore } from "../store/authStore";
+import LoginForm from "@/features/login/components/LoginForm";
+import { useAuthStore } from "@/store/authStore";
 
 const LoginPage = () => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import VehicleDetails from "../features/vehicle/components/VehicleDetails";
-import BackButton from "../ui/BackButton";
+import VehicleDetails from "@/features/vehicle/components/VehicleDetails";
+import BackButton from "@/ui/BackButton";
 
 const VehiclePage = () => {
   const { id } = useParams() as { id: string };

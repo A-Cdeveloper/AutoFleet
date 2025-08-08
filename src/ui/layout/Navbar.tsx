@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
-import { useAuthStore } from "../../store/authStore";
+import { useAuthStore } from "@/store/authStore";
 
 const links = [{ to: "/vehicles/add", label: "Dodaj vozilo" }];
 

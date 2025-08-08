@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-import { useAuthStore } from "../../store/authStore";
+import { useAuthStore } from "@/store/authStore";
 import { Suspense, type ReactNode } from "react";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import notfound from "../assets/404.png";
-import Headline from "../ui/Headline";
-import Button from "../ui/Button";
+import notfound from "@/assets/404.png";
+import Headline from "@/ui/Headline";
+import Button from "@/ui/Button";
 import { useCallback } from "react";
 
 const PageNotFound = () => {

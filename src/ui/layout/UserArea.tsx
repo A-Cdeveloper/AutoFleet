@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../store/authStore";
-import Button from "../Button";
+import { useAuthStore } from "@/store/authStore";
+import Button from "@/ui/Button";
 import { useCallback } from "react";
 
 const UserArea = () => {

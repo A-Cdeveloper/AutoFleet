@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "@/ui/layout/Layout";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import PageNotFound from "../pages/PageNotFound";
+import HomePage from "@/pages/HomePage";
+import LoginPage from "@/pages/LoginPage";
+import PageNotFound from "@/pages/PageNotFound";
 import ProtectedRoute from "@/ui/layout/ProtectedRoute";
 
-import AddVehiclePage from "../pages/AddVehiclePage";
-import VehiclePage from "../pages/VehiclePage";
-import EditVehiclePage from "../pages/EditVehiclePage";
+import AddVehiclePage from "@/pages/AddVehiclePage";
+import VehiclePage from "@/pages/VehiclePage";
+import EditVehiclePage from "@/pages/EditVehiclePage";
 
 const mainRouter = [
   {
