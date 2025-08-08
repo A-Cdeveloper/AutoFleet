@@ -1,5 +1,5 @@
 import type { Service } from "@/types/service";
-import { Button, ErrorBoundary, Headline } from "@/ui";
+import { Button, ErrorBoundary, Headline, Spinner, ErrorMessage } from "@/ui";
 import useGetVehicleServices from "@/features/vehicle/hooks/useGetVehicleServices";
 import AddVehicleServiceFormualar from "@/features/vehicle/components/AddVehicleServiceFormualar";
 import VehicleService from "@/features/vehicle/components/VehicleService";
@@ -32,8 +32,8 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
     setEditingServiceId(null);
   }, []);
 
-  if (isLoading) return <p>Učitavanje servisa...</p>;
-  if (error) return <p>Greška: {error}</p>;
+  if (isLoading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
 
   let content = (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2">
