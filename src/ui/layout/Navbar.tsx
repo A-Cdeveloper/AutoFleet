@@ -57,15 +57,28 @@ const Navbar = () => {
           }
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         />
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="absolute top-16 right-0 w-[300px] bg-white border border-gray-200 shadow-lg rounded-md">
-            <div className="px-3 py-2 space-y-3">
-              <NavigationLinks />
+          <>
+            <h2 id="mobile-menu-title" className="sr-only">
+              Mobile Navigation Menu
+            </h2>
+            <div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="mobile-menu-title"
+              className="absolute top-16 right-0 w-[300px] bg-white border border-gray-200 shadow-lg rounded-md"
+            >
+              <div className="px-3 py-2 space-y-3">
+                <NavigationLinks />
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </>
