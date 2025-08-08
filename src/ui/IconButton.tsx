@@ -27,7 +27,7 @@ const IconButton = ({
   return (
     <button
       className={clsx(
-        "rounded transition-colors duration-200 flex items-center justify-center p-0 bg-transparent hover:bg-gray-100",
+        "rounded transition-colors duration-200 flex items-center justify-center p-0 bg-transparent",
         disabled && "opacity-50 cursor-not-allowed",
         className
       )}
