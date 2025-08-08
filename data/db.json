@@ -3,13 +3,13 @@
     {
       "marka": "Toyota Zero",
       "model": "Corolla",
-      "godina": 2015,
+      "godina": 2011,
       "services": [
         "s3",
         "s4",
-        "s2",
         "s7",
-        "f3b0"
+        "f3b0",
+        "0504"
       ],
       "id": "v1"
     },
@@ -273,6 +273,13 @@
       "cena": 2500,
       "tipServisa": "redovni servis",
       "id": "47a1"
+    },
+    {
+      "id": "0504",
+      "datum": "2025-08-09",
+      "opis": "Popravka kočionog sistema",
+      "cena": 23000,
+      "tipServisa": "redovni servis"
     }
   ],
   "users": [
