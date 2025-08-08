@@ -20,7 +20,11 @@ const VehicleDetails = React.memo(({ id }: { id: string }) => {
   }, [navigate, id]);
 
   const handleDelete = useCallback(() => {
-    if (window.confirm("Da li ste sigurni da želite da obrišete vozilo?")) {
+    if (
+      window.confirm(
+        "Da li ste sigurni da želite da obrišete vozilo? Ova akcija će takođe obrisati sve servise vezane za ovo vozilo."
+      )
+    ) {
       deleteVehicleById(id, {
         onSuccess: () => navigate("/"),
       });

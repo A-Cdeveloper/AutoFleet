@@ -167,6 +167,39 @@ export const editVehicle = async (
 
 export const deleteVehicle = async (id: string): Promise<ApiResponse<null>> => {
   try {
+    const vehicleResponse = await fetch(`${config.apiBaseUrl}/vehicles/${id}`);
+
+    if (!vehicleResponse.ok) {
+      const error: ApiError = {
+        message: `Greška pri pronalaženju vozila!`,
+        status: vehicleResponse.status,
+      };
+      return {
+        data: null,
+        error: error.message,
+        success: false,
+      };
+    }
+
+    const vehicle = await vehicleResponse.json();
+
+    // Obriši sve servise vezane za ovo vozilo
+    if (vehicle.services && vehicle.services.length > 0) {
+      const deleteServicePromises = vehicle.services.map(
+        async (serviceId: string) => {
+          const serviceResponse = await fetch(
+            `${config.apiBaseUrl}/services/${serviceId}`,
+            {
+              method: "DELETE",
+            }
+          );
+          return serviceResponse.ok;
+        }
+      );
+
+      await Promise.all(deleteServicePromises);
+    }
+
     const response = await fetch(`${config.apiBaseUrl}/vehicles/${id}`, {
       method: "DELETE",
     });

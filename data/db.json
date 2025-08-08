@@ -48,15 +48,6 @@
       ]
     },
     {
-      "id": "v6",
-      "marka": "Audi",
-      "model": "A4",
-      "godina": 2019,
-      "services": [
-        "s8"
-      ]
-    },
-    {
       "marka": "Renault",
       "model": "Clio",
       "godina": 2018,
@@ -210,13 +201,6 @@
       "cena": 3000,
       "tipServisa": "kvar",
       "id": "s7"
-    },
-    {
-      "id": "s8",
-      "datum": "2025-01-30",
-      "opis": "Veliki servis (remen, pumpa)",
-      "cena": 40000,
-      "tipServisa": "redovni servis"
     },
     {
       "id": "s9",
