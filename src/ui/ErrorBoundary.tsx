@@ -43,7 +43,6 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="flex flex-col min-h-screen">
           <main className="flex-1 w-full max-w-7xl mx-auto p-5 flex flex-col justify-center items-center">
-            {/* Error Icon - možete dodati error ikonu ovde */}
             <div className="w-[150px] h-[150px] bg-auto-error/10 rounded-full flex items-center justify-center mb-6">
               <svg
                 className="w-16 h-16 text-auto-error"

@@ -67,7 +67,7 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(
           "w-full border transition-colors duration-200 font-roboto",
           "focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50",
           "disabled:opacity-50 disabled:cursor-not-allowed",
-          "h-[42px]", // Eksplicitna visina za konzistentnost
+          "h-[42px]",
           sizeClasses[size],
           className
         )}

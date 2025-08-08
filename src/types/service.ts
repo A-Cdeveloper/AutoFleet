@@ -28,7 +28,6 @@ const baseServiceSchema = {
   opis: z.string().min(1, "Opis je obavezan"),
 };
 
-// Schema za edit - dozvoljava prošlost
 const baseServiceEditSchema = {
   datum: z.string().min(1, "Datum je obavezan"),
   tipServisa: z
@@ -49,7 +48,6 @@ export const serviceFormInputSchema = z.object({
     }),
 });
 
-// Nova schema za edit
 export const serviceFormEditSchema = z.object({
   ...baseServiceEditSchema,
   cena: z

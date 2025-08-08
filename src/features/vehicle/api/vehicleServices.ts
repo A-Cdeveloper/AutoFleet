@@ -68,7 +68,6 @@ export const addServiceToVehicle = async (
   serviceData: Omit<Service, "id">
 ): Promise<ApiResponse<Service>> => {
   try {
-    // new service
     const serviceResponse = await fetch(`${config.apiBaseUrl}/services`, {
       method: "POST",
       headers: {
@@ -91,7 +90,6 @@ export const addServiceToVehicle = async (
 
     const newService: Service = await serviceResponse.json();
 
-    // update vehicle
     const vehicleResponse = await fetch(
       `${config.apiBaseUrl}/vehicles/${vehicleId}`
     );
