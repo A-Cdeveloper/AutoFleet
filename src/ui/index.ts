@@ -10,3 +10,4 @@ export { default as BackButton } from "./BackButton";
 export { default as FilterInput } from "./FilterInput";
 export { default as Pagination } from "./Pagination";
 export { default as ErrorBoundary } from "./ErrorBoundary";
+export { default as Notifications } from "./Notifications";

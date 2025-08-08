@@ -8,6 +8,7 @@ import ProtectedRoute from "@/ui/layout/ProtectedRoute";
 import AddVehiclePage from "@/pages/AddVehiclePage";
 import VehiclePage from "@/pages/VehiclePage";
 import EditVehiclePage from "@/pages/EditVehiclePage";
+import { Notifications } from "@/ui";
 
 const mainRouter = [
   {
@@ -56,6 +57,7 @@ const MainRouter = () => {
   return (
     <>
       <RouterProvider router={router} />
+      <Notifications />
     </>
   );
 };
