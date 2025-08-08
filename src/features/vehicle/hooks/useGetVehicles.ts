@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchVehicles } from "../api/vehicleApi";
-import type { Vehicle } from "../../../types/vehicle";
-import type { ApiResponse } from "../../../types/api";
+import { fetchVehicles } from "@/features/vehicle/api/vehicleApi";
+import type { Vehicle } from "@/types/vehicle";
+import type { ApiResponse } from "@/types/api";
 
 const useGetVehicles = () => {
   const {

@@ -1,5 +1,5 @@
-import { useUrlParams } from "../../../hooks/useUrlParams";
-import FilterInput from "../../../ui/FilterInput";
+import { useUrlParams } from "@/hooks/useUrlParams";
+import FilterInput from "@/ui/FilterInput";
 
 interface VehicleTopBarProps {
   totalItems: number;

@@ -1,10 +1,10 @@
-import type { Service } from "../../../types/service";
-import Button from "../../../ui/Button";
-import { formatDate, formatPrice } from "../../../utils/helpers";
-import useRemoveServiceFromVehicle from "../hooks/useRemoveServiceFromVehicle";
-import EditVehicleServiceFormular from "./EditVehicleServiceFormular";
-import Spinner from "../../../ui/Spinner";
-import ErrorMessage from "../../../ui/ErrorMessage";
+import type { Service } from "@/types/service";
+import Button from "@/ui/Button";
+import { formatDate, formatPrice } from "@/utils/helpers";
+import useRemoveServiceFromVehicle from "@/features/vehicle/hooks/useRemoveServiceFromVehicle";
+import EditVehicleServiceFormular from "@/features/vehicle/components/EditVehicleServiceFormular";
+import Spinner from "@/ui/Spinner";
+import ErrorMessage from "@/ui/ErrorMessage";
 
 const VehicleService = ({
   service,

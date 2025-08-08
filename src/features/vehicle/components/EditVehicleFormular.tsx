@@ -2,18 +2,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {
-  vehicleFormSchema,
-  type VehicleFormData,
-} from "../../../types/vehicle";
-import Button from "../../../ui/Button";
-import FormErrorMessage from "../../../ui/FormErrorMessage";
-import Headline from "../../../ui/Headline";
-import Input from "../../../ui/Input";
-import Spinner from "../../../ui/Spinner";
-import ErrorBoundary from "../../../ui/ErrorBoundary";
-import { useEditVehicle } from "../hooks/useEditVehicle";
-import useGetVehicle from "../hooks/useGetVehicle";
+import { vehicleFormSchema, type VehicleFormData } from "@/types/vehicle";
+import Button from "@/ui/Button";
+import FormErrorMessage from "@/ui/FormErrorMessage";
+import Headline from "@/ui/Headline";
+import Input from "@/ui/Input";
+import Spinner from "@/ui/Spinner";
+import ErrorBoundary from "@/ui/ErrorBoundary";
+import { useEditVehicle } from "@/features/vehicle/hooks/useEditVehicle";
+import useGetVehicle from "@/features/vehicle/hooks/useGetVehicle";
 
 const EditVehicleForm = ({ id }: { id: string }) => {
   const navigate = useNavigate();

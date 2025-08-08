@@ -1,7 +1,7 @@
-import { config } from "../../../config/env";
-import type { ApiError, ApiResponse } from "../../../types/api";
-import type { Service } from "../../../types/service";
-import type { Vehicle } from "../../../types/vehicle";
+import { config } from "@/config/env";
+import type { ApiError, ApiResponse } from "@/types/api";
+import type { Service } from "@/types/service";
+import type { Vehicle } from "@/types/vehicle";
 
 export const removeServiceFromVehicle = async (
   vehicleId: string,

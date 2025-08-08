@@ -1,23 +1,23 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
-import Button from "../../../ui/Button";
-import Headline from "../../../ui/Headline";
-import Spinner from "../../../ui/Spinner";
-import ErrorMessage from "../../../ui/ErrorMessage";
-import FormErrorMessage from "../../../ui/FormErrorMessage";
-import ErrorBoundary from "../../../ui/ErrorBoundary";
-import { useEditServiceInVehicle } from "../hooks/useEditServiceInVehicle";
+import Button from "@/ui/Button";
+import Headline from "@/ui/Headline";
+import Spinner from "@/ui/Spinner";
+import ErrorMessage from "@/ui/ErrorMessage";
+import FormErrorMessage from "@/ui/FormErrorMessage";
+import ErrorBoundary from "@/ui/ErrorBoundary";
+import { useEditServiceInVehicle } from "@/features/vehicle/hooks/useEditServiceInVehicle";
 import {
   serviceFormInputSchema,
   ServiceType,
   type ServiceFormInput,
-} from "../../../types/service";
-import Input from "../../../ui/Input";
-import Select from "../../../ui/Select";
-import Textarea from "../../../ui/TextArea";
+} from "@/types/service";
+import Input from "@/ui/Input";
+import Select from "@/ui/Select";
+import Textarea from "@/ui/TextArea";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import type { Service } from "../../../types/service";
+import type { Service } from "@/types/service";
 
 type EditVehicleServiceFormularProps = {
   service: Service;

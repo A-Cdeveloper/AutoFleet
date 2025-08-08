@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchVehicleById } from "../api/vehicleApi";
-import type { Vehicle } from "../../../types/vehicle";
-import type { ApiResponse } from "../../../types/api";
+import { fetchVehicleById } from "@/features/vehicle/api/vehicleApi";
+import type { Vehicle } from "@/types/vehicle";
+import type { ApiResponse } from "@/types/api";
 
 const useGetVehicle = (id: string) => {
   const {

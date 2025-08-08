@@ -1,6 +1,6 @@
-import type { Vehicle } from "../../../types/vehicle";
-import type { ApiResponse, ApiError } from "../../../types/api";
-import { config } from "../../../config/env";
+import type { Vehicle } from "@/types/vehicle";
+import type { ApiResponse, ApiError } from "@/types/api";
+import { config } from "@/config/env";
 
 export const fetchVehicles = async (): Promise<ApiResponse<Vehicle[]>> => {
   try {

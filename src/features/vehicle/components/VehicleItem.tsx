@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import type { Vehicle } from "../../../types/vehicle";
-import Button from "../../../ui/Button";
-import Headline from "../../../ui/Headline";
-import { useAuthStore } from "../../../store/authStore";
+import type { Vehicle } from "@/types/vehicle";
+import Button from "@/ui/Button";
+import Headline from "@/ui/Headline";
+import { useAuthStore } from "@/store/authStore";
 
 const VehicleItem = ({ vehicle }: { vehicle: Vehicle }) => {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { Vehicle } from "../../../types/vehicle";
+import type { Vehicle } from "@/types/vehicle";
 
 interface UseFilteredVehiclesParams {
   vehicles?: Vehicle[] | null;

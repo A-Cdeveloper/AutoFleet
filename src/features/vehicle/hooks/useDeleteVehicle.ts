@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteVehicle } from "../api/vehicleApi";
-import type { ApiResponse } from "../../../types/api";
+import type { ApiResponse } from "@/types/api";
+import { deleteVehicle } from "@/features/vehicle/api/vehicleApi";
 
 const useDeleteVehicle = () => {
   const queryClient = useQueryClient();

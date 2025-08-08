@@ -1,8 +1,8 @@
-import type { ApiResponse, ApiError } from "../../../types/api";
+import type { ApiResponse, ApiError } from "@/types/api";
 
-import { config } from "../../../config/env";
-import type { Vehicle } from "../../../types/vehicle";
-import type { Service } from "../../../types/service";
+import { config } from "@/config/env";
+import type { Vehicle } from "@/types/vehicle";
+import type { Service } from "@/types/service";
 
 export const fetchServicesByVehicleId = async (
   vehicleId: string

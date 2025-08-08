@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { Service } from "../../../types/service";
-import type { ApiResponse } from "../../../types/api";
-import { editServiceInVehicle } from "../api/vehicleServices";
+import type { Service } from "@/types/service";
+import type { ApiResponse } from "@/types/api";
+import { editServiceInVehicle } from "@/features/vehicle/api/vehicleServices";
 
 export const useEditServiceInVehicle = () => {
   const queryClient = useQueryClient();

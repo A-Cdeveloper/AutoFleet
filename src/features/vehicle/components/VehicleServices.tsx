@@ -1,10 +1,10 @@
-import type { Service } from "../../../types/service";
-import Button from "../../../ui/Button";
-import ErrorBoundary from "../../../ui/ErrorBoundary";
-import Headline from "../../../ui/Headline";
-import useGetVehicleServices from "../hooks/useGetVehicleServices";
-import AddVehicleServiceFormualar from "./AddVehicleServiceFormualar";
-import VehicleService from "./VehicleService";
+import type { Service } from "@/types/service";
+import Button from "@/ui/Button";
+import ErrorBoundary from "@/ui/ErrorBoundary";
+import Headline from "@/ui/Headline";
+import useGetVehicleServices from "@/features/vehicle/hooks/useGetVehicleServices";
+import AddVehicleServiceFormualar from "@/features/vehicle/components/AddVehicleServiceFormualar";
+import VehicleService from "@/features/vehicle/components/VehicleService";
 import { useState } from "react";
 
 type VehicleServicesProps = {
