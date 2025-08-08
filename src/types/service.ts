@@ -6,29 +6,6 @@ export enum ServiceType {
 }
 
 const baseServiceSchema = {
-  datum: z
-    .string()
-    .min(1, "Datum je obavezan")
-    .refine(
-      (val) => {
-        const selectedDate = new Date(val);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        return selectedDate >= today;
-      },
-      {
-        message: "Datum ne može biti u prošlosti",
-      }
-    ),
-  tipServisa: z
-    .enum(ServiceType)
-    .refine((val) => Object.values(ServiceType).includes(val), {
-      message: "Izaberite tip servisa",
-    }),
-  opis: z.string().min(1, "Opis je obavezan"),
-};
-
-const baseServiceEditSchema = {
   datum: z.string().min(1, "Datum je obavezan"),
   tipServisa: z
     .enum(ServiceType)
@@ -36,27 +13,30 @@ const baseServiceEditSchema = {
       message: "Izaberite tip servisa",
     }),
   opis: z.string().min(1, "Opis je obavezan"),
+  cena: z
+    .string()
+    .min(1, "Cena je obavezna")
+    .refine((val) => Number(val) > 0, {
+      message: "Cena mora biti veća od 0",
+    }),
 };
 
 export const serviceFormInputSchema = z.object({
   ...baseServiceSchema,
-  cena: z
-    .string()
-    .min(1, "Cena je obavezna")
-    .refine((val) => Number(val) > 0, {
-      message: "Cena mora biti veća od 0",
-    }),
+  datum: baseServiceSchema.datum.refine(
+    (val) => {
+      const selectedDate = new Date(val);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return selectedDate >= today;
+    },
+    {
+      message: "Datum ne može biti u prošlosti",
+    }
+  ),
 });
 
-export const serviceFormEditSchema = z.object({
-  ...baseServiceEditSchema,
-  cena: z
-    .string()
-    .min(1, "Cena je obavezna")
-    .refine((val) => Number(val) > 0, {
-      message: "Cena mora biti veća od 0",
-    }),
-});
+export const serviceFormEditSchema = z.object(baseServiceSchema);
 
 export type Service = {
   id: string;

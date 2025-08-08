@@ -9,7 +9,8 @@
         "s4",
         "s7",
         "f3b0",
-        "0504"
+        "0504",
+        "6f98"
       ],
       "id": "v1"
     },
@@ -151,18 +152,10 @@
       "model": "55",
       "godina": 2000,
       "services": [
-        "2c1a",
         "5798",
         "93fd"
       ],
       "id": "dece"
-    },
-    {
-      "id": "a578",
-      "marka": "Volkswagen",
-      "model": "up",
-      "godina": 2025,
-      "services": []
     }
   ],
   "services": [
@@ -312,6 +305,13 @@
       "opis": "Generalna zamena delova",
       "cena": 5000,
       "tipServisa": "kvar"
+    },
+    {
+      "id": "6f98",
+      "datum": "2025-08-20",
+      "opis": "test unos",
+      "cena": 1500,
+      "tipServisa": "redovni servis"
     }
   ],
   "users": [

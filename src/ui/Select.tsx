@@ -64,7 +64,7 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(
         aria-describedby={ariaDescribedby}
         aria-invalid={ariaInvalid}
         className={clsx(
-          "w-full border transition-colors duration-200 font-roboto",
+          "w-full border transition-colors duration-200 font-roboto bg-white",
           "focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50",
           "disabled:opacity-50 disabled:cursor-not-allowed",
           "h-[42px]",

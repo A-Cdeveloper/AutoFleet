@@ -54,7 +54,7 @@ const VehicleService = React.memo(
             <p>{formatDate(new Date(service.datum))}</p>
             <p>{service.opis}</p>
             <p>{formatPrice(service.cena)}</p>
-            <p>{service.tipServisa}</p>
+            <p className="uppercase text-[11px]">{service.tipServisa}</p>
 
             <div className="flex gap-3 justify-end items-center">
               <IconButton
