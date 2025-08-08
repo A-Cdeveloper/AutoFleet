@@ -16,9 +16,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import type { Service } from "@/types/service";
 import { useEditServiceInVehicle } from "@/features/vehicle/hooks/useEditServiceInVehicle";
 import {
-  serviceFormInputSchema,
+  serviceFormEditSchema,
   ServiceType,
-  type ServiceFormInput,
+  type ServiceFormEditInput,
 } from "@/types/service";
 
 type EditVehicleServiceFormularProps = {
@@ -36,11 +36,11 @@ const EditVehicleServiceFormular = ({
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<ServiceFormInput>({
-    resolver: zodResolver(serviceFormInputSchema),
+  } = useForm<ServiceFormEditInput>({
+    resolver: zodResolver(serviceFormEditSchema),
     defaultValues: {
       datum: service.datum,
-      tipServisa: service.tipServisa,
+      tipServisa: service.tipServisa as ServiceType,
       opis: service.opis,
       cena: service.cena.toString(),
     },
@@ -48,7 +48,7 @@ const EditVehicleServiceFormular = ({
 
   const { editService, isPending, error } = useEditServiceInVehicle();
 
-  const onSubmit = async (data: ServiceFormInput) => {
+  const onSubmit = async (data: ServiceFormEditInput) => {
     await editService(
       {
         vehicleId,
@@ -91,7 +91,6 @@ const EditVehicleServiceFormular = ({
                     field.onChange(date?.toISOString().split("T")[0])
                   }
                   dateFormat="dd.MM.yyyy"
-                  minDate={new Date()}
                   placeholderText="Izaberi datum"
                   className="w-full border transition-colors duration-200 font-roboto px-2 py-1 text-xl h-[42px] focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50"
                 />

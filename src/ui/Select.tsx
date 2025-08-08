@@ -4,6 +4,7 @@ import clsx from "clsx";
 export type SelectType = {
   placeholder?: string;
   value?: string;
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   name?: string;
   id?: string;
@@ -30,6 +31,7 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(
     {
       placeholder,
       value,
+      defaultValue,
       onChange,
       name,
       id,
@@ -52,6 +54,7 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(
         id={id}
         name={name}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
         required={required}
         disabled={disabled}

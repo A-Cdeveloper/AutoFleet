@@ -28,8 +28,30 @@ const baseServiceSchema = {
   opis: z.string().min(1, "Opis je obavezan"),
 };
 
+// Schema za edit - dozvoljava prošlost
+const baseServiceEditSchema = {
+  datum: z.string().min(1, "Datum je obavezan"),
+  tipServisa: z
+    .enum(ServiceType)
+    .refine((val) => Object.values(ServiceType).includes(val), {
+      message: "Izaberite tip servisa",
+    }),
+  opis: z.string().min(1, "Opis je obavezan"),
+};
+
 export const serviceFormInputSchema = z.object({
   ...baseServiceSchema,
+  cena: z
+    .string()
+    .min(1, "Cena je obavezna")
+    .refine((val) => Number(val) > 0, {
+      message: "Cena mora biti veća od 0",
+    }),
+});
+
+// Nova schema za edit
+export const serviceFormEditSchema = z.object({
+  ...baseServiceEditSchema,
   cena: z
     .string()
     .min(1, "Cena je obavezna")
@@ -47,3 +69,4 @@ export type Service = {
 };
 
 export type ServiceFormInput = z.infer<typeof serviceFormInputSchema>;
+export type ServiceFormEditInput = z.infer<typeof serviceFormEditSchema>;

@@ -167,28 +167,28 @@
       "datum": "2025-08-01",
       "opis": "Zamena ulja i filtera",
       "cena": 8500,
-      "tipServisa": "redovni"
+      "tipServisa": "redovni servis"
     },
     {
-      "id": "s2",
       "datum": "2025-07-15",
       "opis": "Popravka kočionog sistema",
       "cena": 12000,
-      "tipServisa": "kvar"
+      "tipServisa": "kvar",
+      "id": "s2"
     },
     {
       "id": "s3",
       "datum": "2025-06-20",
       "opis": "Zamena guma",
       "cena": 24000,
-      "tipServisa": "redovni"
+      "tipServisa": "redovni servis"
     },
     {
       "id": "s4",
       "datum": "2025-05-10",
       "opis": "Servis klima uređaja",
       "cena": 6500,
-      "tipServisa": "redovni"
+      "tipServisa": "redovni servis"
     },
     {
       "id": "s5",
@@ -202,21 +202,21 @@
       "datum": "2025-03-18",
       "opis": "Zamena akumulatora",
       "cena": 9500,
-      "tipServisa": "redovni"
+      "tipServisa": "redovni servis"
     },
     {
-      "id": "s7",
       "datum": "2025-02-22",
       "opis": "Zamena svetala",
       "cena": 3000,
-      "tipServisa": "kvar"
+      "tipServisa": "kvar",
+      "id": "s7"
     },
     {
       "id": "s8",
       "datum": "2025-01-30",
       "opis": "Veliki servis (remen, pumpa)",
       "cena": 40000,
-      "tipServisa": "redovni"
+      "tipServisa": "redovni servis"
     },
     {
       "id": "s9",
@@ -230,7 +230,7 @@
       "datum": "2024-11-05",
       "opis": "Zamena svećica i kablova",
       "cena": 7000,
-      "tipServisa": "redovni"
+      "tipServisa": "redovni servis"
     },
     {
       "id": "b0d2",
