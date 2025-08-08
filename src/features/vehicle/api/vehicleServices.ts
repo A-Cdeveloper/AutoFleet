@@ -154,3 +154,52 @@ export const addServiceToVehicle = async (
     };
   }
 };
+
+export const editServiceInVehicle = async (
+  serviceId: string,
+  serviceData: Omit<Service, "id">
+): Promise<ApiResponse<Service>> => {
+  try {
+    const serviceResponse = await fetch(
+      `${config.apiBaseUrl}/services/${serviceId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(serviceData),
+      }
+    );
+
+    if (!serviceResponse.ok) {
+      const error: ApiError = {
+        message: "Greška pri ažuriranju servisa!",
+        status: serviceResponse.status,
+      };
+      return {
+        data: null,
+        error: error.message,
+        success: false,
+      };
+    }
+
+    const updatedService: Service = await serviceResponse.json();
+
+    return {
+      data: updatedService,
+      error: null,
+      success: true,
+    };
+  } catch (error) {
+    const apiError: ApiError = {
+      message: error instanceof Error ? error.message : "Nepoznata greška",
+      status: 0,
+    };
+    console.error("Greška pri ažuriranju servisa:", apiError);
+    return {
+      data: null,
+      error: apiError.message,
+      success: false,
+    };
+  }
+};
