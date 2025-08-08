@@ -45,7 +45,8 @@
       "model": "320d",
       "godina": 2018,
       "services": [
-        "s2"
+        "s2",
+        "ca5d"
       ]
     },
     {
@@ -311,6 +312,13 @@
       "datum": "2025-08-20",
       "opis": "test unos",
       "cena": 1500,
+      "tipServisa": "redovni servis"
+    },
+    {
+      "id": "ca5d",
+      "datum": "2025-08-14",
+      "opis": "Zamena ulja",
+      "cena": 5000,
       "tipServisa": "redovni servis"
     }
   ],

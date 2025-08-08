@@ -8,7 +8,7 @@ const ErrorMessage = ({ message }: { message?: string }) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center space-y-6">
+    <div className="self-center justify-center items-center flex flex-col gap-6">
       <Headline level={2} className="text-auto-error">
         {message}
       </Headline>
