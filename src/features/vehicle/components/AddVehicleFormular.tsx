@@ -37,7 +37,9 @@ const AddVehicleForm = () => {
     addNewVehicle(
       { ...data, godina: Number(data.godina), services: [] },
       {
-        onSuccess: () => navigate("/"),
+        onSuccess: () => {
+          navigate("/");
+        },
       }
     );
   };

@@ -2,6 +2,7 @@ import type { Vehicle } from "@/types/vehicle";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ApiResponse } from "@/types/api";
 import { editVehicle } from "@/features/vehicle/api/vehicleApi";
+import toast from "react-hot-toast";
 
 export const useEditVehicle = () => {
   const queryClient = useQueryClient();
@@ -20,9 +21,15 @@ export const useEditVehicle = () => {
     mutationFn: ({ id, data }) => editVehicle(id, data),
     onSuccess: (response, variables) => {
       if (response.success) {
+        toast.success("Podaci o vozilu su uspešno izmenjeni!");
         queryClient.invalidateQueries({ queryKey: ["vehicles"] });
         queryClient.invalidateQueries({ queryKey: ["vehicle", variables.id] });
+      } else {
+        toast.error("Greška pri izmeni vozila. Pokušajte ponovo.");
       }
+    },
+    onError: () => {
+      toast.error("Greška pri izmeni podataka o vozilu. Pokušajte ponovo.");
     },
   });
 

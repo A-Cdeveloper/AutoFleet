@@ -25,11 +25,14 @@ const VehicleDetails = React.memo(({ id }: { id: string }) => {
         "Da li ste sigurni da želite da obrišete vozilo? Ova akcija će takođe obrisati sve servise vezane za ovo vozilo."
       )
     ) {
-      deleteVehicleById(id, {
-        onSuccess: () => navigate("/"),
-      });
+      deleteVehicleById(
+        { id, vehicle: vehicle || undefined },
+        {
+          onSuccess: () => navigate("/"),
+        }
+      );
     }
-  }, [deleteVehicleById, id, navigate]);
+  }, [deleteVehicleById, id, vehicle, navigate]);
 
   if (!vehicle) return <ErrorMessage message="Vozilo nije pronađeno." />;
   if (isLoading || isPending) return <Spinner />;

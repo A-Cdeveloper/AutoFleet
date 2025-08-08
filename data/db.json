@@ -23,13 +23,13 @@
       "id": "v2"
     },
     {
-      "id": "v3",
       "marka": "Ford",
-      "model": "Focus",
+      "model": "Focus XS",
       "godina": 2016,
       "services": [
         "s7"
-      ]
+      ],
+      "id": "v3"
     },
     {
       "id": "v4",
@@ -142,7 +142,9 @@
       "marka": "Volkswagen",
       "model": "up",
       "godina": 2025,
-      "services": []
+      "services": [
+        "dfb9"
+      ]
     },
     {
       "marka": "Yugo",
@@ -154,6 +156,13 @@
         "93fd"
       ],
       "id": "dece"
+    },
+    {
+      "id": "a578",
+      "marka": "Volkswagen",
+      "model": "up",
+      "godina": 2025,
+      "services": []
     }
   ],
   "services": [
@@ -289,6 +298,20 @@
       "opis": "Veliki servis",
       "cena": 50000,
       "tipServisa": "redovni servis"
+    },
+    {
+      "datum": "2025-08-09",
+      "opis": "zamena ulja",
+      "cena": 5000,
+      "tipServisa": "redovni servis",
+      "id": "dfb9"
+    },
+    {
+      "id": "b48c",
+      "datum": "2025-08-09",
+      "opis": "Generalna zamena delova",
+      "cena": 5000,
+      "tipServisa": "kvar"
     }
   ],
   "users": [
