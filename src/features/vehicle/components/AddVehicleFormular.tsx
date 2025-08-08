@@ -111,15 +111,6 @@ const AddVehicleForm = () => {
 
         <div className="flex gap-4 justify-end">
           <Button
-            type="submit"
-            variation="primary"
-            size="medium"
-            disabled={isSubmitting}
-            aria-label="Dodaj novo vozilo"
-          >
-            Dodaj vozilo
-          </Button>
-          <Button
             type="button"
             variation="secondary"
             size="medium"
@@ -127,6 +118,15 @@ const AddVehicleForm = () => {
             aria-label="Odustani od dodavanja vozila"
           >
             Odustani
+          </Button>
+          <Button
+            type="submit"
+            variation="primary"
+            size="medium"
+            disabled={isSubmitting}
+            aria-label="Dodaj novo vozilo"
+          >
+            Dodaj vozilo
           </Button>
         </div>
       </form>

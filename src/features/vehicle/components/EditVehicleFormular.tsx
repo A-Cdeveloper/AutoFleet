@@ -143,15 +143,6 @@ const EditVehicleForm = ({ id }: { id: string }) => {
 
         <div className="flex gap-4 justify-end">
           <Button
-            type="submit"
-            variation="primary"
-            size="medium"
-            disabled={isSubmitting || editing}
-            aria-label="Sačuvaj izmene vozila"
-          >
-            {editing ? "Čuvanje..." : "Sačuvaj izmene"}
-          </Button>
-          <Button
             type="button"
             variation="secondary"
             size="medium"
@@ -159,6 +150,15 @@ const EditVehicleForm = ({ id }: { id: string }) => {
             aria-label="Odustani od izmene vozila"
           >
             Odustani
+          </Button>
+          <Button
+            type="submit"
+            variation="primary"
+            size="medium"
+            disabled={isSubmitting || editing}
+            aria-label="Sačuvaj izmene vozila"
+          >
+            {editing ? "Čuvanje..." : "Sačuvaj izmene"}
           </Button>
         </div>
       </form>
