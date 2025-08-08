@@ -3,12 +3,14 @@ import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { vehicleFormSchema, type VehicleFormData } from "@/types/vehicle";
-import Button from "@/ui/Button";
-import FormErrorMessage from "@/ui/FormErrorMessage";
-import Headline from "@/ui/Headline";
-import Input from "@/ui/Input";
-import Spinner from "@/ui/Spinner";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import {
+  Button,
+  FormErrorMessage,
+  Headline,
+  Input,
+  Spinner,
+  ErrorBoundary,
+} from "@/ui";
 import { useEditVehicle } from "@/features/vehicle/hooks/useEditVehicle";
 import useGetVehicle from "@/features/vehicle/hooks/useGetVehicle";
 
@@ -81,10 +83,13 @@ const EditVehicleForm = ({ id }: { id: string }) => {
                 type="text"
                 placeholder="Marka vozila"
                 size="medium"
+                aria-label="Marka vozila"
+                aria-describedby={errors.marka ? "marka-error" : undefined}
+                aria-invalid={!!errors.marka}
               />
             )}
           />
-          <FormErrorMessage message={errors.marka?.message} />
+          <FormErrorMessage message={errors.marka?.message} id="marka-error" />
         </div>
 
         <div>
@@ -97,10 +102,13 @@ const EditVehicleForm = ({ id }: { id: string }) => {
                 type="text"
                 placeholder="Model vozila"
                 size="medium"
+                aria-label="Model vozila"
+                aria-describedby={errors.model ? "model-error" : undefined}
+                aria-invalid={!!errors.model}
               />
             )}
           />
-          <FormErrorMessage message={errors.model?.message} />
+          <FormErrorMessage message={errors.model?.message} id="model-error" />
         </div>
 
         <div>
@@ -113,13 +121,19 @@ const EditVehicleForm = ({ id }: { id: string }) => {
                 type="number"
                 placeholder="Godina proizvodnje"
                 size="medium"
+                aria-label="Godina proizvodnje"
+                aria-describedby={errors.godina ? "godina-error" : undefined}
+                aria-invalid={!!errors.godina}
               />
             )}
           />
-          <FormErrorMessage message={errors.godina?.message} />
+          <FormErrorMessage
+            message={errors.godina?.message}
+            id="godina-error"
+          />
         </div>
 
-        {editError && <FormErrorMessage message={editError} />}
+        {editError && <FormErrorMessage message={editError} id="form-error" />}
 
         <div className="flex gap-4 justify-end">
           <Button
@@ -127,6 +141,7 @@ const EditVehicleForm = ({ id }: { id: string }) => {
             variation="primary"
             size="medium"
             disabled={isSubmitting || editing}
+            aria-label="Sačuvaj izmene vozila"
           >
             {editing ? "Čuvanje..." : "Sačuvaj izmene"}
           </Button>
@@ -135,6 +150,7 @@ const EditVehicleForm = ({ id }: { id: string }) => {
             variation="secondary"
             size="medium"
             onClick={() => navigate(`/vehicles/${id}`)}
+            aria-label="Odustani od izmene vozila"
           >
             Odustani
           </Button>

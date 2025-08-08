@@ -1,9 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Button from "@/ui/Button";
-import ErrorMessage from "@/ui/ErrorMessage";
-import Headline from "@/ui/Headline";
-import Spinner from "@/ui/Spinner";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import { Button, ErrorMessage, Headline, Spinner, ErrorBoundary } from "@/ui";
 import useDeleteVehicle from "@/features/vehicle/hooks/useDeleteVehicle";
 import useGetVehicle from "@/features/vehicle/hooks/useGetVehicle";
 import VehicleServices from "@/features/vehicle/components/VehicleServices";
@@ -37,6 +33,7 @@ const VehicleDetails = ({ id }: { id: string }) => {
             variation="primary"
             size="small"
             onClick={() => navigate(`/vehicles/${id}/edit`)}
+            aria-label="Izmeni vozilo"
           >
             Izmeni
           </Button>
@@ -55,6 +52,7 @@ const VehicleDetails = ({ id }: { id: string }) => {
               }
             }}
             disabled={isPending}
+            aria-label="Obriši vozilo"
           >
             Obriši
           </Button>

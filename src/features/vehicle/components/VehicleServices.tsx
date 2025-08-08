@@ -1,7 +1,5 @@
 import type { Service } from "@/types/service";
-import Button from "@/ui/Button";
-import ErrorBoundary from "@/ui/ErrorBoundary";
-import Headline from "@/ui/Headline";
+import { Button, ErrorBoundary, Headline } from "@/ui";
 import useGetVehicleServices from "@/features/vehicle/hooks/useGetVehicleServices";
 import AddVehicleServiceFormualar from "@/features/vehicle/components/AddVehicleServiceFormualar";
 import VehicleService from "@/features/vehicle/components/VehicleService";
@@ -51,6 +49,7 @@ const VehicleServices = ({ vehicleId }: VehicleServicesProps) => {
               variation="secondary"
               size="small"
               onClick={() => setShowAddForm(!showAddForm)}
+              aria-label="Dodaj novi servis"
             >
               Dodaj servis
             </Button>

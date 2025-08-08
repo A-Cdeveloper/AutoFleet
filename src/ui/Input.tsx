@@ -14,6 +14,10 @@ export type InputType = {
   size?: "small" | "medium" | "large";
   className?: string;
   step?: string | number;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
 };
 
 const sizeClasses: Record<NonNullable<InputType["size"]>, string> = {
@@ -36,7 +40,11 @@ const Input = forwardRef<HTMLInputElement, InputType>(
       autoFocus = false,
       size = "medium",
       className = "",
-      step, // primamo step
+      step,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledby,
+      "aria-describedby": ariaDescribedby,
+      "aria-invalid": ariaInvalid,
     },
     ref
   ) => {
@@ -53,6 +61,10 @@ const Input = forwardRef<HTMLInputElement, InputType>(
         disabled={disabled}
         autoFocus={autoFocus}
         step={step}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        aria-describedby={ariaDescribedby}
+        aria-invalid={ariaInvalid}
         className={clsx(
           "w-full border transition-colors duration-200 font-roboto",
           "focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50",

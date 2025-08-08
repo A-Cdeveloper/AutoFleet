@@ -13,6 +13,10 @@ export type SelectType = {
   size?: "small" | "medium" | "large";
   className?: string;
   children?: React.ReactNode;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
 };
 
 const sizeClasses: Record<NonNullable<SelectType["size"]>, string> = {
@@ -35,6 +39,10 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(
       size = "medium",
       className = "",
       children,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledby,
+      "aria-describedby": ariaDescribedby,
+      "aria-invalid": ariaInvalid,
     },
     ref
   ) => {
@@ -48,6 +56,10 @@ const Select = forwardRef<HTMLSelectElement, SelectType>(
         required={required}
         disabled={disabled}
         autoFocus={autoFocus}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        aria-describedby={ariaDescribedby}
+        aria-invalid={ariaInvalid}
         className={clsx(
           "w-full border transition-colors duration-200 font-roboto",
           "focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50",

@@ -2,11 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@/store/authStore";
 import { useNavigate } from "react-router-dom";
-import Headline from "@/ui/Headline";
-import Button from "@/ui/Button";
-import Input from "@/ui/Input";
-import FormErrorMessage from "@/ui/FormErrorMessage";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import { Headline, Button, Input, FormErrorMessage, ErrorBoundary } from "@/ui";
 import { loginSchema, type LoginFormData } from "@/types/auth";
 
 export default function LoginForm() {
@@ -58,10 +54,16 @@ export default function LoginForm() {
               placeholder="Korisničko ime"
               autoFocus
               size="medium"
+              aria-label="Korisničko ime"
+              aria-describedby={errors.username ? "username-error" : undefined}
+              aria-invalid={!!errors.username}
             />
           )}
         />
-        <FormErrorMessage message={errors.username?.message} />
+        <FormErrorMessage
+          message={errors.username?.message}
+          id="username-error"
+        />
 
         <Controller
           name="password"
@@ -72,12 +74,18 @@ export default function LoginForm() {
               type="password"
               placeholder="Lozinka"
               size="medium"
+              aria-label="Lozinka"
+              aria-describedby={errors.password ? "password-error" : undefined}
+              aria-invalid={!!errors.password}
             />
           )}
         />
-        <FormErrorMessage message={errors.password?.message} />
+        <FormErrorMessage
+          message={errors.password?.message}
+          id="password-error"
+        />
 
-        <FormErrorMessage message={errors.root?.message} />
+        <FormErrorMessage message={errors.root?.message} id="form-error" />
 
         <Button
           type="submit"

@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ITEMS_PER_PAGE } from "@/constants";
 import { useUrlParams } from "@/hooks/useUrlParams";
-import ErrorMessage from "@/ui/ErrorMessage";
-import Pagination from "@/ui/Pagination";
-import Spinner from "@/ui/Spinner";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import { ErrorMessage, Pagination, Spinner, ErrorBoundary } from "@/ui";
 import useGetVehicles from "@/features/vehicle/hooks/useGetVehicles";
 import VehicleItem from "@/features/vehicle/components/VehicleItem";
 import VehicleTopBar from "@/features/vehicle/components/VehicleTopBar";

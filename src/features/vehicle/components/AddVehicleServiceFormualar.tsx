@@ -1,22 +1,24 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
-import Button from "@/ui/Button";
-import Headline from "@/ui/Headline";
-import Spinner from "@/ui/Spinner";
-import ErrorMessage from "@/ui/ErrorMessage";
-import FormErrorMessage from "@/ui/FormErrorMessage";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import {
+  Button,
+  Headline,
+  Spinner,
+  ErrorMessage,
+  FormErrorMessage,
+  ErrorBoundary,
+  Input,
+  Select,
+  TextArea,
+} from "@/ui";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useAddServiceToVehicle } from "@/features/vehicle/hooks/useAddServiceToVehicle";
 import {
   serviceFormInputSchema,
   ServiceType,
   type ServiceFormInput,
 } from "@/types/service";
-import Input from "@/ui/Input";
-import Select from "@/ui/Select";
-import Textarea from "@/ui/TextArea";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const AddVehicleServiceFormular = ({
   setShowAddForm,
@@ -101,13 +103,24 @@ const AddVehicleServiceFormular = ({
               name="tipServisa"
               control={control}
               render={({ field }) => (
-                <Select {...field} size="medium">
+                <Select
+                  {...field}
+                  size="medium"
+                  aria-label="Tip servisa"
+                  aria-describedby={
+                    errors.tipServisa ? "tipServisa-error" : undefined
+                  }
+                  aria-invalid={!!errors.tipServisa}
+                >
                   <option value={ServiceType.REDOVNI}>Redovni servis</option>
                   <option value={ServiceType.KVAR}>Kvar</option>
                 </Select>
               )}
             />
-            <FormErrorMessage message={errors.tipServisa?.message} />
+            <FormErrorMessage
+              message={errors.tipServisa?.message}
+              id="tipServisa-error"
+            />
           </div>
         </div>
 
@@ -116,15 +129,18 @@ const AddVehicleServiceFormular = ({
             name="opis"
             control={control}
             render={({ field }) => (
-              <Textarea
+              <TextArea
                 {...field}
                 rows={3}
                 placeholder="Opis servisa..."
                 size="medium"
+                aria-label="Opis servisa"
+                aria-describedby={errors.opis ? "opis-error" : undefined}
+                aria-invalid={!!errors.opis}
               />
             )}
           />
-          <FormErrorMessage message={errors.opis?.message} />
+          <FormErrorMessage message={errors.opis?.message} id="opis-error" />
         </div>
 
         <div>
@@ -140,12 +156,15 @@ const AddVehicleServiceFormular = ({
                   step="0.01"
                   size="medium"
                   className="!w-40"
+                  aria-label="Cena servisa u RSD"
+                  aria-describedby={errors.cena ? "cena-error" : undefined}
+                  aria-invalid={!!errors.cena}
                 />
                 <span className="text-gray-500">RSD</span>
               </div>
             )}
           />
-          <FormErrorMessage message={errors.cena?.message} />
+          <FormErrorMessage message={errors.cena?.message} id="cena-error" />
         </div>
 
         <div className="flex gap-2 justify-end">
@@ -154,6 +173,7 @@ const AddVehicleServiceFormular = ({
             variation="secondary"
             size="small"
             onClick={() => setShowAddForm(false)}
+            aria-label="Odustani od dodavanja servisa"
           >
             Odustani
           </Button>
@@ -162,6 +182,7 @@ const AddVehicleServiceFormular = ({
             variation="primary"
             size="small"
             disabled={isPending}
+            aria-label="Sačuvaj novi servis"
           >
             {isPending ? "Dodavanje..." : "Sačuvaj"}
           </Button>

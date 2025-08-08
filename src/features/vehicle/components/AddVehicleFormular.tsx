@@ -1,15 +1,17 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Button from "@/ui/Button";
-import FormErrorMessage from "@/ui/FormErrorMessage";
-import Headline from "@/ui/Headline";
-import Input from "@/ui/Input";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import {
+  Button,
+  FormErrorMessage,
+  Headline,
+  Input,
+  ErrorBoundary,
+  Spinner,
+  ErrorMessage,
+} from "@/ui";
 import { useAddVehicle } from "@/features/vehicle/hooks/useAddVehicle";
 import { vehicleFormSchema, type VehicleFormData } from "@/types/vehicle";
-import Spinner from "@/ui/Spinner";
-import ErrorMessage from "@/ui/ErrorMessage";
 
 const AddVehicleForm = () => {
   const {
@@ -55,10 +57,13 @@ const AddVehicleForm = () => {
                 type="text"
                 placeholder="Marka vozila"
                 size="medium"
+                aria-label="Marka vozila"
+                aria-describedby={errors.marka ? "marka-error" : undefined}
+                aria-invalid={!!errors.marka}
               />
             )}
           />
-          <FormErrorMessage message={errors.marka?.message} />
+          <FormErrorMessage message={errors.marka?.message} id="marka-error" />
         </div>
 
         <div>
@@ -71,10 +76,13 @@ const AddVehicleForm = () => {
                 type="text"
                 placeholder="Model vozila"
                 size="medium"
+                aria-label="Model vozila"
+                aria-describedby={errors.model ? "model-error" : undefined}
+                aria-invalid={!!errors.model}
               />
             )}
           />
-          <FormErrorMessage message={errors.model?.message} />
+          <FormErrorMessage message={errors.model?.message} id="model-error" />
         </div>
 
         <div>
@@ -87,10 +95,16 @@ const AddVehicleForm = () => {
                 type="number"
                 placeholder="Godina proizvodnje"
                 size="medium"
+                aria-label="Godina proizvodnje"
+                aria-describedby={errors.godina ? "godina-error" : undefined}
+                aria-invalid={!!errors.godina}
               />
             )}
           />
-          <FormErrorMessage message={errors.godina?.message} />
+          <FormErrorMessage
+            message={errors.godina?.message}
+            id="godina-error"
+          />
         </div>
 
         <div className="flex gap-4 justify-end">
@@ -99,6 +113,7 @@ const AddVehicleForm = () => {
             variation="primary"
             size="medium"
             disabled={isSubmitting}
+            aria-label="Dodaj novo vozilo"
           >
             Dodaj vozilo
           </Button>
@@ -107,6 +122,7 @@ const AddVehicleForm = () => {
             variation="secondary"
             size="medium"
             onClick={() => navigate("/")}
+            aria-label="Odustani od dodavanja vozila"
           >
             Odustani
           </Button>

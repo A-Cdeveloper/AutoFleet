@@ -1,10 +1,8 @@
 import type { Service } from "@/types/service";
-import Button from "@/ui/Button";
+import { Button, Spinner, ErrorMessage } from "@/ui";
 import { formatDate, formatPrice } from "@/utils/helpers";
 import useRemoveServiceFromVehicle from "@/features/vehicle/hooks/useRemoveServiceFromVehicle";
 import EditVehicleServiceFormular from "@/features/vehicle/components/EditVehicleServiceFormular";
-import Spinner from "@/ui/Spinner";
-import ErrorMessage from "@/ui/ErrorMessage";
 
 const VehicleService = ({
   service,
@@ -53,7 +51,12 @@ const VehicleService = ({
           <p>{service.tipServisa}</p>
 
           <div className="flex gap-2 justify-end items-center">
-            <Button variation="primary" size="small" onClick={onEditClick}>
+            <Button
+              variation="primary"
+              size="small"
+              onClick={onEditClick}
+              aria-label="Izmeni servis"
+            >
               Izmeni
             </Button>
             <Button
@@ -61,6 +64,7 @@ const VehicleService = ({
               size="small"
               onClick={handleRemove}
               disabled={isPending}
+              aria-label="Obriši servis"
             >
               {isPending ? "Brisanje..." : "Obriši"}
             </Button>

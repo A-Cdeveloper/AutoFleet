@@ -1,23 +1,25 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
-import Button from "@/ui/Button";
-import Headline from "@/ui/Headline";
-import Spinner from "@/ui/Spinner";
-import ErrorMessage from "@/ui/ErrorMessage";
-import FormErrorMessage from "@/ui/FormErrorMessage";
-import ErrorBoundary from "@/ui/ErrorBoundary";
+import {
+  Button,
+  Headline,
+  Spinner,
+  ErrorMessage,
+  FormErrorMessage,
+  ErrorBoundary,
+  Input,
+  Select,
+  TextArea,
+} from "@/ui";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import type { Service } from "@/types/service";
 import { useEditServiceInVehicle } from "@/features/vehicle/hooks/useEditServiceInVehicle";
 import {
   serviceFormInputSchema,
   ServiceType,
   type ServiceFormInput,
 } from "@/types/service";
-import Input from "@/ui/Input";
-import Select from "@/ui/Select";
-import Textarea from "@/ui/TextArea";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import type { Service } from "@/types/service";
 
 type EditVehicleServiceFormularProps = {
   service: Service;
@@ -103,13 +105,24 @@ const EditVehicleServiceFormular = ({
               name="tipServisa"
               control={control}
               render={({ field }) => (
-                <Select {...field} size="medium">
+                <Select
+                  {...field}
+                  size="medium"
+                  aria-label="Tip servisa"
+                  aria-describedby={
+                    errors.tipServisa ? "tipServisa-error" : undefined
+                  }
+                  aria-invalid={!!errors.tipServisa}
+                >
                   <option value={ServiceType.REDOVNI}>Redovni servis</option>
                   <option value={ServiceType.KVAR}>Kvar</option>
                 </Select>
               )}
             />
-            <FormErrorMessage message={errors.tipServisa?.message} />
+            <FormErrorMessage
+              message={errors.tipServisa?.message}
+              id="tipServisa-error"
+            />
           </div>
         </div>
 
@@ -118,15 +131,18 @@ const EditVehicleServiceFormular = ({
             name="opis"
             control={control}
             render={({ field }) => (
-              <Textarea
+              <TextArea
                 {...field}
                 rows={3}
                 placeholder="Opis servisa..."
                 size="medium"
+                aria-label="Opis servisa"
+                aria-describedby={errors.opis ? "opis-error" : undefined}
+                aria-invalid={!!errors.opis}
               />
             )}
           />
-          <FormErrorMessage message={errors.opis?.message} />
+          <FormErrorMessage message={errors.opis?.message} id="opis-error" />
         </div>
 
         <div>
@@ -142,12 +158,15 @@ const EditVehicleServiceFormular = ({
                   step="0.01"
                   size="medium"
                   className="!w-40"
+                  aria-label="Cena servisa u RSD"
+                  aria-describedby={errors.cena ? "cena-error" : undefined}
+                  aria-invalid={!!errors.cena}
                 />
                 <span className="text-gray-500">RSD</span>
               </div>
             )}
           />
-          <FormErrorMessage message={errors.cena?.message} />
+          <FormErrorMessage message={errors.cena?.message} id="cena-error" />
         </div>
 
         <div className="flex gap-2 justify-end">
@@ -156,6 +175,7 @@ const EditVehicleServiceFormular = ({
             variation="secondary"
             size="small"
             onClick={onCancel}
+            aria-label="Otkaži izmenu servisa"
           >
             Otkaži
           </Button>
@@ -164,6 +184,7 @@ const EditVehicleServiceFormular = ({
             variation="primary"
             size="small"
             disabled={isPending}
+            aria-label="Sačuvaj izmene servisa"
           >
             {isPending ? "Čuvanje..." : "Sačuvaj izmene"}
           </Button>

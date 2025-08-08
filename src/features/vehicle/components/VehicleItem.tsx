@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import type { Vehicle } from "@/types/vehicle";
-import Button from "@/ui/Button";
-import Headline from "@/ui/Headline";
+import { Button, Headline } from "@/ui";
 import { useAuthStore } from "@/store/authStore";
 
 const VehicleItem = ({ vehicle }: { vehicle: Vehicle }) => {
@@ -23,6 +22,7 @@ const VehicleItem = ({ vehicle }: { vehicle: Vehicle }) => {
             onClick={() => {
               navigate(`/vehicles/${vehicle.id}`);
             }}
+            aria-label={`Pogledaj detalje za ${vehicle.marka} ${vehicle.model}`}
           >
             Detalji
           </Button>

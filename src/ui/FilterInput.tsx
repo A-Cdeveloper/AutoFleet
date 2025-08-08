@@ -7,6 +7,7 @@ interface FilterInputProps {
   placeholder?: string;
   type?: "text" | "number" | "email" | "password";
   className?: string;
+  "aria-label"?: string;
 }
 
 const FilterInput = ({
@@ -16,6 +17,7 @@ const FilterInput = ({
   placeholder,
   type = "text",
   className = "",
+  "aria-label": ariaLabel,
 }: FilterInputProps) => {
   return (
     <div className={`flex flex-col ${className}`}>
@@ -26,6 +28,7 @@ const FilterInput = ({
         value={value || ""}
         onChange={(e) => onChange(e.target.value)}
         size="medium"
+        aria-label={ariaLabel}
       />
     </div>
   );

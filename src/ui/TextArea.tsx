@@ -13,6 +13,10 @@ export type TextareaType = {
   size?: "small" | "medium" | "large";
   className?: string;
   rows?: number;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
 };
 
 const sizeClasses: Record<NonNullable<TextareaType["size"]>, string> = {
@@ -35,6 +39,10 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaType>(
       size = "medium",
       className = "",
       rows = 3,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledby,
+      "aria-describedby": ariaDescribedby,
+      "aria-invalid": ariaInvalid,
     },
     ref
   ) => {
@@ -50,6 +58,10 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaType>(
         disabled={disabled}
         autoFocus={autoFocus}
         rows={rows}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        aria-describedby={ariaDescribedby}
+        aria-invalid={ariaInvalid}
         className={clsx(
           "w-full border resize-y transition-colors duration-200 font-roboto",
           "focus:outline-none focus:ring-1 focus:ring-auto-secondary focus:ring-opacity-50",

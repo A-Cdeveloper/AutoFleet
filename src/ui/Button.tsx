@@ -17,6 +17,10 @@ export type ButtonType = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+  "aria-label"?: string;
+  "aria-describedby"?: string;
+  "aria-expanded"?: boolean;
+  "aria-pressed"?: boolean;
 };
 
 const sizeClasses: Record<NonNullable<ButtonType["size"]>, string> = {
@@ -45,6 +49,10 @@ const Button = ({
   onClick,
   type = "button",
   className = "",
+  "aria-label": ariaLabel,
+  "aria-describedby": ariaDescribedby,
+  "aria-expanded": ariaExpanded,
+  "aria-pressed": ariaPressed,
 }: ButtonType) => {
   return (
     <button
@@ -59,6 +67,10 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedby}
+      aria-expanded={ariaExpanded}
+      aria-pressed={ariaPressed}
     >
       {children}
     </button>
