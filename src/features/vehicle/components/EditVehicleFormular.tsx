@@ -35,14 +35,20 @@ const EditVehicleForm = ({ id }: { id: string }) => {
     formState: { errors, isSubmitting },
   } = useForm<VehicleFormData>({
     resolver: zodResolver(vehicleFormSchema),
+    defaultValues: {
+      marka: "",
+      model: "",
+      godina: "",
+      services: [],
+    },
   });
 
   useEffect(() => {
     if (vehicle) {
       reset({
-        marka: vehicle.marka,
-        model: vehicle.model,
-        godina: vehicle.godina.toString(),
+        marka: vehicle.marka || "",
+        model: vehicle.model || "",
+        godina: vehicle.godina?.toString() || "",
         services: vehicle.services || [],
       });
     }
