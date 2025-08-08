@@ -57,14 +57,6 @@ const VehicleService = React.memo(
 
             <div className="flex gap-2 justify-end items-center">
               <Button
-                variation="primary"
-                size="small"
-                onClick={onEditClick}
-                aria-label="Izmeni servis"
-              >
-                Izmeni
-              </Button>
-              <Button
                 variation="danger"
                 size="small"
                 onClick={handleRemove}
@@ -72,6 +64,14 @@ const VehicleService = React.memo(
                 aria-label="Obriši servis"
               >
                 {isPending ? "Brisanje..." : "Obriši"}
+              </Button>
+              <Button
+                variation="primary"
+                size="small"
+                onClick={onEditClick}
+                aria-label="Izmeni servis"
+              >
+                Izmeni
               </Button>
             </div>
           </li>

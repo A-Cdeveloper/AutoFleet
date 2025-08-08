@@ -48,14 +48,6 @@ const VehicleDetails = React.memo(({ id }: { id: string }) => {
 
         <div className="flex justify-end gap-2">
           <Button
-            variation="primary"
-            size="small"
-            onClick={handleEdit}
-            aria-label="Izmeni vozilo"
-          >
-            Izmeni
-          </Button>
-          <Button
             variation="danger"
             size="small"
             onClick={handleDelete}
@@ -63,6 +55,14 @@ const VehicleDetails = React.memo(({ id }: { id: string }) => {
             aria-label="Obriši vozilo"
           >
             Obriši
+          </Button>
+          <Button
+            variation="primary"
+            size="small"
+            onClick={handleEdit}
+            aria-label="Izmeni vozilo"
+          >
+            Izmeni
           </Button>
         </div>
 
