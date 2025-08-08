@@ -56,7 +56,7 @@ const VehicleTopBar = React.memo(
       <div className="border-y flex flex-col sm:flex-row justify-between items-center p-2 mb-2 bg-white/50 gap-4">
         <div className="min-w-[120px]">Ukupno ({totalItems})</div>
 
-        <div className="flex flex-col sm:flex-row sm:space-x-4 flex-grow w-full">
+        <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 flex-grow w-full">
           <FilterInput
             placeholder="Marka vozila"
             value={markaFilter}

@@ -1,10 +1,10 @@
-import { useForm, Controller } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@/store/authStore";
-import { useNavigate } from "react-router-dom";
-import { Headline, Button, Input, FormErrorMessage, ErrorBoundary } from "@/ui";
 import { loginSchema, type LoginFormData } from "@/types/auth";
+import { Button, ErrorBoundary, FormErrorMessage, Input } from "@/ui";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const {
@@ -42,10 +42,6 @@ export default function LoginForm() {
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-4 rounded-lg shadow-md w-full max-w-lg space-y-2"
       >
-        <Headline level={2} className="text-center">
-          Prijava
-        </Headline>
-
         <Controller
           name="username"
           control={control}
