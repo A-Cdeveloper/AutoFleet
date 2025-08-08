@@ -18,13 +18,9 @@ const UserArea = () => {
     toast.success("Uspešno ste se odjavili!");
   }, [logout]);
 
-  const commonProps = {
-    className: "uppercase",
-  };
-
   return (
     <Button
-      {...commonProps}
+      className="uppercase w-auto"
       variation={isAuthenticated ? "danger" : "secondary"}
       size="small"
       onClick={isAuthenticated ? handleLogout : handleLogin}
